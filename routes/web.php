@@ -1,6 +1,9 @@
 <?php
 
+use GuzzleHttp\Client;
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Carbon;
+use Illuminate\Http\Request;
 
 /*
 |--------------------------------------------------------------------------
@@ -14,53 +17,53 @@ use Illuminate\Support\Facades\Route;
 */
 
 // Globalus duomenų masyvas su straipsnių informacija
-$posts = [
-    1 => [
-        'title' => 'First article',
-        'content' => 'First article content',
-        'is_new' => false,
-        'authors' => [
-            1 => [
-                'name' => 'Authorname_1',
-                'surname' => 'Authorsurname_1'
-            ],
-            2 => [
-                'name' => 'Authorname_2',
-                'surname' => 'Authorsurname_2'
-            ]
-        ]
-    ],
-    2 => [
-        'title' => 'Second article',
-        'content' => 'Second article content',
-        'is_new' => true,
-        'authors' => [
-            1 => [
-                'name' => 'Authorname_3',
-                'surname' => 'Authorsurname_3'
-            ],
-            2 => [
-                'name' => 'Authorname_4',
-                'surname' => 'Authorsurname_4'
-            ]
-        ]
-    ],
-    3 => [
-        'title' => 'Third article',
-        'content' => 'Third article content',
-        'is_new' => false,
-        'authors' => [
-            1 => [
-                'name' => 'Authorname_5',
-                'surname' => 'Authorsurname_5'
-            ],
-            2 => [
-                'name' => 'Authorname_6',
-                'surname' => 'Authorsurname_6'
-            ]
-        ]
-    ]
-];
+// $posts = [
+//     1 => [
+//         'title' => 'First article',
+//         'content' => 'First article content',
+//         'is_new' => false,
+//         'authors' => [
+//             1 => [
+//                 'name' => 'Authorname_1',
+//                 'surname' => 'Authorsurname_1'
+//             ],
+//             2 => [
+//                 'name' => 'Authorname_2',
+//                 'surname' => 'Authorsurname_2'
+//             ]
+//         ]
+//     ],
+//     2 => [
+//         'title' => 'Second article',
+//         'content' => 'Second article content',
+//         'is_new' => true,
+//         'authors' => [
+//             1 => [
+//                 'name' => 'Authorname_3',
+//                 'surname' => 'Authorsurname_3'
+//             ],
+//             2 => [
+//                 'name' => 'Authorname_4',
+//                 'surname' => 'Authorsurname_4'
+//             ]
+//         ]
+//     ],
+//     3 => [
+//         'title' => 'Third article',
+//         'content' => 'Third article content',
+//         'is_new' => false,
+//         'authors' => [
+//             1 => [
+//                 'name' => 'Authorname_5',
+//                 'surname' => 'Authorsurname_5'
+//             ],
+//             2 => [
+//                 'name' => 'Authorname_6',
+//                 'surname' => 'Authorsurname_6'
+//             ]
+//         ]
+//     ]
+// ];
 
 // Route::get('/', function () {
 //     // dd(route('home.index'));
@@ -199,31 +202,155 @@ $posts = [
 // })->name('home.contact');
 
 //Alternatyva aukstesniam Route dviems
-Route::view('/contact','home.contact');
-Route::view('/contact','home.contact');
+// Route::view('/contact','home.contact');
+// Route::view('/contact','home.contact');
 
-Route::prefix('articles')->name('articles.')->group(function () use ($posts) {
+// Route::prefix('articles')->name('articles.')->group(function () use ($posts) {
 
-    Route::get('recent/{days?}', function ($days = 25) use ($posts) {
-        return "Articles from $days ago";
-    })->name('recent');
+//     Route::get('recent/{days?}', function ($days = 25) use ($posts) {
+//         return "Articles from $days ago";
+//     })->name('recent');
 
-    Route::get('{id}',function($id){
+//     Route::get('{id}',function($id){
 
-        $articles = [
-            1=>[
-                'title' => 'Title 1',
-                'content' => 'Content 1'
-            ],
-            2=>[
-                'title' => 'Title 2',
-                'content' => 'Content 2'
-            ]
-        ];
-        
-        //apsauga, jei nera articlo tokio
-        abort_if(!isset($articles[$id]), 404 ); 
+//         $articles = [
+//             1=>[
+//                 'title' => 'Title 1',
+//                 'content' => 'Content 1'
+//             ],
+//             2=>[
+//                 'title' => 'Title 2',
+//                 'content' => 'Content 2'
+//             ]
+//         ];
 
-        return view('articles.show',['article' => $articles[$id]]);
-    })->name('show');
+//         //apsauga, jei nera articlo tokio
+//         abort_if(!isset($articles[$id]), 404 ); 
+
+//         return view('articles.show',['article' => $articles[$id]]);
+//     })->name('show');
+// });
+
+// $users = [
+//     1 => [
+//         'id' => '1',
+//         'name' => 'Jonas',
+//         'surname' => 'Jonaitis',
+//         'birthday' => '1995-03-11',
+//         'cart' => [
+//             'keyword' =>'leather_jacket',
+//             'color' => 'black'
+//         ]
+//     ],
+//     35 => [
+//         'id' => '35',
+//         'name' => 'Ona',
+//         'surname' => 'Onaitė',
+//         'birthday' => '1990-07-20',
+//         'cart' => [
+//             'keyword' =>'leather_trausers',
+//             'color' => 'white'
+//         ]
+//     ],
+
+// ];
+
+// Route::get('/user/{id}',function(int $id) use ($users){
+//    if(Carbon::parse($users[$id]['birthday'])->age > 13){
+//         return redirect()->route('dashbord');
+//    }
+
+//    abort(403);
+// })->name('user');
+
+// Route::get('/user/{id}/cart', function(int $id) use ($user){
+//     return response('success, 200')->cookie('USER_CART', json_encode($users[$id]['cart'], 3600 );)
+// })->name('user.cart');
+
+// Route::view('/','home.index')->name('dashboard');
+
+// Route::prefix('/user')->name('user.')->group(function() use ($users) {
+
+//     Route::get('/{id}', function (int $id) use ($users) {
+//         if (Carbon::parse($users[$id]['birthday'])->age > 13) {
+//             return redirect()->route('dashboard');
+//         };
+
+//         abort(403);
+//     })->name('age');
+
+//     Route::get('/{id}/cart', function (int $id) use ($users) {
+//         return response('success', 200)->cookie('USER_CART', json_encode($users[$id]['cart']), 3600);
+//     })->name('cart');
+
+// });
+
+// Route::get('lecture/query', function(Request $request){
+//     return response()->json($request->query());
+// });
+
+$users = [
+    1 => [
+        'id' => '1',
+        'user_type' => 'client',
+        'name' => 'Jonas',
+        'surname' => 'Jonaitis',
+    ],
+    2 => [
+        'id' => '2',
+        'user_type' => 'worker',
+        'name' => 'Petras',
+        'surname' => 'Petraitis',
+    ],
+    3 => [
+        'id' => '3',
+        'user_type' => 'admin',
+        'name' => 'Vardenis',
+        'surname' => 'Pavardenis',
+    ],
+
+
+];
+
+
+Route::view('/', 'home.index')->name('dashboard');
+
+//client routes
+Route::view('/conferences', 'conferences.conferences')->name('conferences');
+Route::view('/client/conferences/show', 'conferences.show')->name('client_show');
+Route::view('/client/conferences/register', 'conferences.register')->name('client_register');
+
+//worker routes
+Route::view('worker/conferences/show', 'conferences.show')->name('worker_show');
+
+// admin routes????
+Route::view('/conferences', 'conferences.conferences')->name('conferences');
+Route::view('/conferences/show', 'conferences.show')->name('show');
+Route::view('/conferences/register', 'conferences.register')->name('register');
+
+
+Route::resource('article', ArticlesController::class)->only(['index', 'show']);
+
+//client
+Route::prefix('client')->name('client.')->group(function () {
+    Route::get('conferences');
+    Route::get('conferences/show');
+    Route::get('conferences/register');
 });
+
+//employee
+Route::prefix('worker')->name('worker.')->group(function () {
+    Route::get('conferences');
+    Route::get('conferences/show');
+});
+
+Route::prefix('admin')->name('admin.')->group(function () {
+    Route::resource('conferences', ArticlesController::class);
+});
+
+
+// function () use ($posts) {
+
+    //     Route::get('recent/{days?}', function ($days = 25) use ($posts) {
+    //         return "Articles from $days ago";
+    //     })->name('recent');

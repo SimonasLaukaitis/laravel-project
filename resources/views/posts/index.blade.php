@@ -4,13 +4,15 @@
 
 @section('content')
 
-
-
-@foreach ($posts as $post) {
+{{-- @foreach ($posts as $post) {
     <h4>{$post['title']}</h4>
     <p>{$post['content']}</p>
 }
-@endforeach
+@endforeach --}}
+
+
+<h5>{{__('app.worker')}}</h5>
+index puslapis
 
 @endsection
 

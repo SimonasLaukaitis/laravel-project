@@ -4,7 +4,7 @@
 @section('title','Home page')
 
 @section('content')
-
-<h5>{{__('app.worker')}}</h5>
+Extended layout/app.blade
+<h5>show conferences</h5>
 
 @endsection
