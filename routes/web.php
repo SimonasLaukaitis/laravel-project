@@ -312,28 +312,82 @@ $users = [
 
 ];
 
+$conferences = [
+    1 => [
+        'location' => 'Vilnius',
+        'event_name' => 'Christmas Conference',
+        'registered_users' => [
+            'Jonas Jonaitis',
+            'Petras Petraitis'
+        ],
+        'event_time' => '1990-12-25'
+    ],
+    2 => [
+        'location' => 'Riga',
+        'event_name' => 'Baltic Tech Summit',
+        'registered_users' => [
+           
+        ],
+        'event_date' => '2023-09-15'
+    ],
+    3 => [
+        'location' => 'London',
+        'event_name' => 'AI Innovation Forum',
+        'registered_users' => [
+            'Jonas Jonaitis',
+            'Petras Petraitis'
+        ],
+        'event_date' => '2023-11-10'
+    ],
+    4 => [
+        'location' => 'New York',
+        'event_name' => 'Tech Expo',
+        'registered_users' => [
+            'Jonas Jonaitis',
+            'Petras Petraitis'
+        ],
+        'event_date' => '2024-03-25'
+    ],
+    5 => [
+        'location' => 'San Francisco',
+        'event_name' => 'Developer Conference',
+        'registered_users' => [
+            'Jonas Jonaitis',
+            'Petras Petraitis'
+        ],
+        'event_date' => '2024-06-05'
+    ],
+    // You can continue adding more conferences here following the same format
+];
+
 
 Route::view('/', 'home.index')->name('dashboard');
 
-//client routes
-Route::view('/conferences', 'conferences.conferences')->name('conferences');
-Route::view('/client/conferences/show', 'conferences.show')->name('client_show');
-Route::view('/client/conferences/register', 'conferences.register')->name('client_register');
+// //client routes
+// Route::view('/client', 'client.conferences')->name('client_conferences');
+// Route::view('/client/conferences/show', 'conferences.show')->name('client_show');
+// Route::view('/client/conferences/register', 'conferences.register')->name('client_register');
 
-//worker routes
-Route::view('worker/conferences/show', 'conferences.show')->name('worker_show');
+// //worker routes
+// Route::view('worker/conferences/show', 'conferences.show')->name('worker_show');
 
-// admin routes????
-Route::view('/conferences', 'conferences.conferences')->name('conferences');
-Route::view('/conferences/show', 'conferences.show')->name('show');
-Route::view('/conferences/register', 'conferences.register')->name('register');
+// // admin routes????
+// Route::view('/conferences', 'conferences.conferences')->name('conferences');
+// Route::view('/conferences/show', 'conferences.show')->name('show');
+// Route::view('/conferences/register', 'conferences.register')->name('register');
 
 
 Route::resource('article', ArticlesController::class)->only(['index', 'show']);
 
 //client
-Route::prefix('client')->name('client.')->group(function () {
-    Route::get('conferences');
+Route::prefix('client')->name('client.')->group(function () use ($conferences) {
+
+
+    Route::get('conferences', function () use ($conferences) {
+        app()->setLocale('lt');
+        return view('client.conferences', ['conferences' => $conferences]);
+    })->name('client.conferences');
+
     Route::get('conferences/show');
     Route::get('conferences/register');
 });
@@ -347,10 +401,3 @@ Route::prefix('worker')->name('worker.')->group(function () {
 Route::prefix('admin')->name('admin.')->group(function () {
     Route::resource('conferences', ArticlesController::class);
 });
-
-
-// function () use ($posts) {
-
-    //     Route::get('recent/{days?}', function ($days = 25) use ($posts) {
-    //         return "Articles from $days ago";
-    //     })->name('recent');
