@@ -399,7 +399,16 @@ Route::prefix('client')->name('client.')->group(function () use ($conferences) {
     })->name('client.show');
 
 
-    Route::get('conferences/register');
+    Route::get('conferences/register/{id}', function ($id) use ($conferences){
+        app()->setLocale('lt');
+
+        if (array_key_exists($id, $conferences)) {
+            return view('client.register', ['conf' => $conferences[$id]]);
+        } else {
+            return 'Konferencija nerasta';
+        }
+
+    })->name('client.register');
 });
 
 //employee

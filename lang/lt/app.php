@@ -8,5 +8,8 @@ return [
     'event_name' => 'Renginio pavadinimas',
     'registered_users' => 'Užsiregistravę žmonės',
     'no_registered_users' => 'Nėra užsiregistravusių žmonių',
-    'conference_not_found' => 'Konferencijų nėra'
+    'conference_not_found' => 'Konferencijų nėra',
+    'conf_reg' => 'Registruotis į konferenciją',
+    'register' => 'Registruotis',
+    'conferences' => 'Konferencijos'
 ];

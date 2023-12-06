@@ -7,7 +7,7 @@
 
 <div class="container">
 
-    <h5 class="mt-4 mb-3">Client conferences</h5>
+    <h5 class="mt-4 mb-3">{{ __('app.conferences') }}</h5>
 
     <div class="row">
         <div class="col-md-12">

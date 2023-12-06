@@ -19,9 +19,12 @@
 </head>
 
 <body>
+
     @yield('content')
 
 </body>
+<script>
 
+</script>
 </html>
 <!-- butinai gale tuscia eilute -->
