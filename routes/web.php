@@ -378,6 +378,12 @@ Route::view('/', 'home.index')->name('dashboard');
 
 Route::resource('article', ArticlesController::class)->only(['index', 'show']);
 
+//Index page
+Route::get('/', function () {
+    app()->setLocale('lt');
+    return view('index');
+})->name('index');
+
 //client
 Route::prefix('client')->name('client.')->group(function () use ($conferences) {
 
