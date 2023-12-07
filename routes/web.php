@@ -4,6 +4,7 @@ use GuzzleHttp\Client;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Carbon;
 use Illuminate\Http\Request;
+use App\Http\Controllers\ClientController;
 
 /*
 |--------------------------------------------------------------------------
@@ -312,52 +313,52 @@ $users = [
 
 ];
 
-$conferences = [
-    1 => [
-        'location' => 'Vilnius',
-        'event_name' => 'Christmas Conference',
-        'registered_users' => [
-            'Jonas Jonaitis',
-            'Petras Petraitis'
-        ],
-        'event_date' => '1990-12-25'
-    ],
-    2 => [
-        'location' => 'Riga',
-        'event_name' => 'Baltic Tech Summit',
-        'registered_users' => [
-        ],
-        'event_date' => '2023-09-15'
-    ],
-    3 => [
-        'location' => 'London',
-        'event_name' => 'AI Innovation Forum',
-        'registered_users' => [
-            'Jonas Jonaitis',
-            'Petras Petraitis'
-        ],
-        'event_date' => '2023-11-10'
-    ],
-    4 => [
-        'location' => 'New York',
-        'event_name' => 'Tech Expo',
-        'registered_users' => [
-            'Jonas Jonaitis',
-            'Petras Petraitis'
-        ],
-        'event_date' => '2024-03-25'
-    ],
-    5 => [
-        'location' => 'San Francisco',
-        'event_name' => 'Developer Conference',
-        'registered_users' => [
-            'Jonas Jonaitis',
-            'Petras Petraitis'
-        ],
-        'event_date' => '2024-06-05'
-    ],
-    // You can continue adding more conferences here following the same format
-];
+// $conferences = [
+//     1 => [
+//         'location' => 'Vilnius',
+//         'event_name' => 'Christmas Conference',
+//         'registered_users' => [
+//             'Jonas Jonaitis',
+//             'Petras Petraitis'
+//         ],
+//         'event_date' => '1990-12-25'
+//     ],
+//     2 => [
+//         'location' => 'Riga',
+//         'event_name' => 'Baltic Tech Summit',
+//         'registered_users' => [
+//         ],
+//         'event_date' => '2023-09-15'
+//     ],
+//     3 => [
+//         'location' => 'London',
+//         'event_name' => 'AI Innovation Forum',
+//         'registered_users' => [
+//             'Jonas Jonaitis',
+//             'Petras Petraitis'
+//         ],
+//         'event_date' => '2023-11-10'
+//     ],
+//     4 => [
+//         'location' => 'New York',
+//         'event_name' => 'Tech Expo',
+//         'registered_users' => [
+//             'Jonas Jonaitis',
+//             'Petras Petraitis'
+//         ],
+//         'event_date' => '2024-03-25'
+//     ],
+//     5 => [
+//         'location' => 'San Francisco',
+//         'event_name' => 'Developer Conference',
+//         'registered_users' => [
+//             'Jonas Jonaitis',
+//             'Petras Petraitis'
+//         ],
+//         'event_date' => '2024-06-05'
+//     ],
+//     // You can continue adding more conferences here following the same format
+// ];
 
 
 Route::view('/', 'home.index')->name('dashboard');
@@ -384,45 +385,50 @@ Route::get('/', function () {
     return view('index');
 })->name('index');
 
-//client
-Route::prefix('client')->name('client.')->group(function () use ($conferences) {
-
-
-    Route::get('conferences', function () use ($conferences) {
-        app()->setLocale('lt');
-        return view('client.conferences', ['conferences' => $conferences]);
-    })->name('client.conferences');
-
-    Route::get('conferences/show/{id}', function ($id) use ($conferences){
-        app()->setLocale('lt');
-
-        if (array_key_exists($id, $conferences)) {
-            return view('client.show', ['conf' => $conferences[$id]]);
-        } else {
-            return 'Konferencija nerasta';
-        }
-
-    })->name('client.show');
-
-
-    Route::get('conferences/register/{id}', function ($id) use ($conferences){
-        app()->setLocale('lt');
-
-        if (array_key_exists($id, $conferences)) {
-            return view('client.register', ['conf' => $conferences[$id]]);
-        } else {
-            return 'Konferencija nerasta';
-        }
-
-    })->name('client.register');
+Route::prefix('client')->name('client.')->group(function () {
+    Route::get('/conferences', [ClientController::class, 'index'])->name('conferences');
+    Route::get('/conferences/show/{id}', [ClientController::class, 'showConference'])->name('showConference');
+    Route::get('/conferences/register/{id}', [ClientController::class, 'registerConference'])->name('registerConference');
 });
 
-//employee
-Route::prefix('worker')->name('worker.')->group(function () {
-    Route::get('conferences');
-    Route::get('conferences/show');
-});
+// //client
+// Route::prefix('client')->name('client.')->group(function () use ($conferences) {
 
-Route::prefix('admin')->name('admin.')->group(function () {
-    Route::resource('conferences', ArticlesController::class);
-});
+//     Route::get('conferences', function () use ($conferences) {
+//         app()->setLocale('lt');
+//         return view('client.conferences', ['conferences' => $conferences]);
+//     })->name('client.conferences');
+
+//     Route::get('conferences/show/{id}', function ($id) use ($conferences){
+//         app()->setLocale('lt');
+
+//         if (array_key_exists($id, $conferences)) {
+//             return view('client.show', ['conf' => $conferences[$id]]);
+//         } else {
+//             return 'Konferencija nerasta';
+//         }
+
+//     })->name('client.show');
+
+
+//     Route::get('conferences/register/{id}', function ($id) use ($conferences){
+//         app()->setLocale('lt');
+
+//         if (array_key_exists($id, $conferences)) {
+//             return view('client.register', ['conf' => $conferences[$id]]);
+//         } else {
+//             return 'Konferencija nerasta';
+//         }
+
+//     })->name('client.register');
+// });
+
+// //employee
+// Route::prefix('worker')->name('worker.')->group(function () {
+//     Route::get('conferences');
+//     Route::get('conferences/show');
+// });
+
+// Route::prefix('admin')->name('admin.')->group(function () {
+//     Route::resource('conferences', ArticlesController::class);
+// });
