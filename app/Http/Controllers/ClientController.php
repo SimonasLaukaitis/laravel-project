@@ -78,13 +78,15 @@ class ClientController extends Controller
         return view('client.conferences', ['conferences' => $conferences]);
     }
 
-    // public function showConference($id)
-    // {
-    //     // Fetch the conference details using $id
-    //     $conference = Conference::find($id);
+    
 
-    //     return view('client.show', ['conference' => $conference]);
-    // }
+    public function showConference($id,$conference)
+    {
+        // Fetch the conference details using $id
+      
+
+        return view('client.show', ['conference' => $conference]);
+    }
 
     // public function registerConference($id)
     // {
