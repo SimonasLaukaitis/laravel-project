@@ -11,5 +11,6 @@ return [
     'conference_not_found' => 'Konferencijų nėra',
     'conf_reg' => 'Registruotis į konferenciją',
     'register' => 'Registruotis',
-    'conferences' => 'Konferencijos'
+    'conferences' => 'Konferencijos',
+    'more' => 'Plačiau'
 ];

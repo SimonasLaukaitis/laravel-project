@@ -25,56 +25,8 @@ use Illuminate\Routing\Controller as BaseController;
 
 class ClientController extends Controller
 {
-    public function index()
+    public function index($conferences)
     {
-        $conferences = [
-            1 => [
-                'location' => 'Vilnius',
-                'event_name' => 'Christmas Conference',
-                'registered_users' => [
-                    'Jonas Jonaitis',
-                    'Petras Petraitis'
-                ],
-                'event_date' => '1990-12-25'
-            ],
-            2 => [
-                'location' => 'Riga',
-                'event_name' => 'Baltic Tech Summit',
-                'registered_users' => [
-                ],
-                'event_date' => '2023-09-15'
-            ],
-            3 => [
-                'location' => 'London',
-                'event_name' => 'AI Innovation Forum',
-                'registered_users' => [
-                    'Jonas Jonaitis',
-                    'Petras Petraitis'
-                ],
-                'event_date' => '2023-11-10'
-            ],
-            4 => [
-                'location' => 'New York',
-                'event_name' => 'Tech Expo',
-                'registered_users' => [
-                    'Jonas Jonaitis',
-                    'Petras Petraitis'
-                ],
-                'event_date' => '2024-03-25'
-            ],
-            5 => [
-                'location' => 'San Francisco',
-                'event_name' => 'Developer Conference',
-                'registered_users' => [
-                    'Jonas Jonaitis',
-                    'Petras Petraitis'
-                ],
-                'event_date' => '2024-06-05'
-            ],
-            // You can continue adding more conferences here following the same format
-        ];
-        
-
         return view('client.conferences', ['conferences' => $conferences]);
     }
 
@@ -82,10 +34,8 @@ class ClientController extends Controller
 
     public function showConference($id,$conference)
     {
-        // Fetch the conference details using $id
-      
-
-        return view('client.show', ['conference' => $conference]);
+        
+        return view('client.show', ['conference' => $conference, 'id' => $id]);
     }
 
     // public function registerConference($id)

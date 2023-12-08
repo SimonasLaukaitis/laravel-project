@@ -4,7 +4,7 @@
 
 @section('content')
 
-<div class="container">
+{{-- <div class="container">
     <h1 class="mt-4">Konferencijos informacija</h1>
 
     @if(isset($conf))
@@ -29,7 +29,7 @@
         <p class="alert alert-warning">{{ __('app.conference_not_found') }}</p>
     @endif
 
-</div>
+</div> --}}
 
 
 
