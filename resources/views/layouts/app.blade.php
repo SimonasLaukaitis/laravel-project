@@ -39,6 +39,8 @@
         infinite: true,
         slidesToShow: 3,
         slidesToScroll: 3,
+        autoplay: true,
+        autoplaySpeed: 2000,
         responsive: [
             {
                 breakpoint: 768, // Adjust this breakpoint as needed
