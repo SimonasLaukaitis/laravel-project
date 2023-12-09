@@ -28,5 +28,6 @@ return [
     'email' => 'Email',
     'user_type' => 'User Type',
     'update' => 'Update',
+    'add_new' => 'Add new',
     
 ];

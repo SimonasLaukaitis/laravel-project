@@ -26,6 +26,16 @@ class AdminController extends Controller
         return view('admin.useredit', ['userID' => $usersID,'user' => $usersID]);
     }
 
+    public function showConferences($conferences)
+    {   
+        return view('admin.conferencelist', ['conferences' => $conferences]);
+    }
+
+    public function newConference()
+    {   
+        return view('admin.newconference');
+    }
+
     // public function show($conferences, $id)
     // {   
     //     $conferenceID = $conferences[$id] ?? null;

@@ -193,7 +193,7 @@ Route::prefix('worker')->name('worker.')->group(function () use ($conferences) {
     })->name('show');
 });
 
-Route::prefix('admin')->name('admin.')->group(function () use ($users){
+Route::prefix('admin')->name('admin.')->group(function () use ($users,$conferences){
     app()->setLocale('lt');
 
     Route::get('/menu', function () {
@@ -207,5 +207,13 @@ Route::prefix('admin')->name('admin.')->group(function () use ($users){
     Route::get('/menu/userlist/useredit/{id}', function ($id) use ($users) {
         return app(AdminController::class)->userEdit($users,$id);
     })->name('useredit');
+
+    Route::get('/menu/userlist/conferencelist', function () use ($conferences) {
+        return app(AdminController::class)->showConferences($conferences);
+    })->name('conferencelist');
+
+    Route::get('/menu/userlist/conferencelist/newconference', function ()  {
+        return app(AdminController::class)->newConference();
+    })->name('newconference');
 
 });

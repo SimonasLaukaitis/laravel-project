@@ -28,5 +28,6 @@ return [
     'email' => 'El. paštas',
     'user_type' => 'Vartotojo tipas',
     'update' => 'Atnaujinti',
+    'add_new' => 'Pridėti naują',
     
 ];
