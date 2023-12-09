@@ -16,7 +16,7 @@
                         <div class="card-body d-flex flex-column">
                             <label for="ev-name">{{ __('app.event_name') }}</label>
                             <h4 id="ev-name">{{ $conference['event_name'] }}</h4>
-                            <p>{{ $conference['id'] }}</p>
+                            {{-- <p>{{ $conference['id'] }}</p> --}}
 
                             {{-- @if(isset($conference['event_date']))
                                 <h5>{{ $conference['event_date'] }}</h5>
