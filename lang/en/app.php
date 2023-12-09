@@ -15,5 +15,18 @@ return [
     'more' => 'More',
     'info' => 'Information',
     'date' => 'Date',
+    'conference_info' => 'Conference information',
+    'all_conferences' => 'All conferences',
+    'future_conferences' => 'Future conferences',
+    'admin_menu' => 'Administrator menu',
+    'all_users_management' => 'All users management',
+    'conference_management' => 'Conference management',
+    'edit' => 'Edit',
+    'data_not_found' => 'Data not found',
+    'name' => 'Name',
+    'surname' => 'Surname',
+    'email' => 'Email',
+    'user_type' => 'User Type',
+    'update' => 'Update',
     
 ];

@@ -15,4 +15,18 @@ return [
     'more' => 'Plačiau',
     'info' => 'Informacija',
     'date' => 'Data',
+    'conference_info' => 'Konferencijos informacija',
+    'all_conferences' => 'Visos konferencijos',
+    'future_conferences' => 'Būsimos konferencijos',
+    'admin_menu' => 'Administratoriaus meniu',
+    'all_users_management' => 'Visų naudotojų duomenų valdymas',
+    'conference_management' => ' Konferencijos valdymas',
+    'edit' => 'Redaguoti',
+    'data_not_found' => 'Nėra duomenų',
+    'name' => 'Vardas',
+    'surname' => 'Pavardė',
+    'email' => 'El. paštas',
+    'user_type' => 'Vartotojo tipas',
+    'update' => 'Atnaujinti',
+    
 ];

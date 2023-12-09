@@ -10,8 +10,8 @@
     <h1 class="main-heading mb-5">{{ __('app.conferences')}}</h1>
     <div class="d-flex justify-content-center">
        <a href="{{ route('client.conferences') }}" onclick="showLoading()" class="btn btn-primary mx-2" href="">{{ __('app.client')}}</a>
-       <a class="btn btn-primary mx-2" href="">{{ __('app.worker')}}</a>
-       <a class="btn btn-primary mx-2" href="">{{ __('app.administrator')}}</a>
+       <a class="btn btn-primary mx-2" href="{{ route('worker.conferences') }}">{{ __('app.worker')}}</a>
+       <a class="btn btn-primary mx-2" href="{{ route('admin.menu') }}">{{ __('app.administrator')}}</a>
        
     </div>
 </div>
