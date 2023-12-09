@@ -151,6 +151,67 @@ $conferences = [
         'event_date' => '2024-06-05',
         'info' => 'The Developer Conference in San Francisco is a hub for developers, offering insights into the latest tools, languages, and best practices in software development.'
     ],
+    6 => [
+        'id' => '6',
+        'location' => 'Berlin',
+        'event_name' => 'Blockchain Summit',
+        'registered_users' => [
+            'Oliver Schmidt',
+            'Sophie Wagner',
+            'Lucas Müller'
+        ],
+        'event_date' => '2023-08-18',
+        'info' => 'The Blockchain Summit in Berlin convenes industry experts and enthusiasts to explore the potential of blockchain technology and its applications.'
+    ],
+    7 => [
+        'id' => '7',
+        'location' => 'Tokyo',
+        'event_name' => 'Gaming Expo',
+        'registered_users' => [
+            'Yuki Tanaka',
+            'Haruto Sato',
+            'Airi Yamamoto',
+            'Ren Nagano'
+        ],
+        'event_date' => '2023-10-30',
+        'info' => 'The Gaming Expo in Tokyo showcases the latest trends and innovations in the gaming industry, bringing together developers, publishers, and gamers.'
+    ],
+    8 => [
+        'id' => '8',
+        'location' => 'Sydney',
+        'event_name' => 'Digital Marketing Conference',
+        'registered_users' => [
+            'Ella Wilson',
+            'Connor Thompson'
+        ],
+        'event_date' => '2024-05-12',
+        'info' => 'The Digital Marketing Conference in Sydney offers insights into effective digital marketing strategies, trends, and tools for marketers.'
+    ],
+    9 => [
+        'id' => '9',
+        'location' => 'Paris',
+        'event_name' => 'Fashion Tech Forum',
+        'registered_users' => [
+            'Aurélie Dubois',
+            'Louis Lambert',
+            'Chloé Martin'
+        ],
+        'event_date' => '2023-09-20',
+        'info' => 'The Fashion Tech Forum in Paris explores the intersection of fashion and technology, showcasing innovations shaping the future of the fashion industry.'
+    ],
+    10 => [
+        'id' => '10',
+        'location' => 'Singapore',
+        'event_name' => 'Data Science Summit',
+        'registered_users' => [
+            'Ethan Lim',
+            'Sophia Ng',
+            'Aiden Tan',
+            'Amelia Goh'
+        ],
+        'event_date' => '2024-07-08',
+        'info' => 'The Data Science Summit in Singapore brings together data scientists and analysts to share insights, techniques, and advancements in data science.'
+    ],
     // More conferences can be added here following the same format
 ];
 

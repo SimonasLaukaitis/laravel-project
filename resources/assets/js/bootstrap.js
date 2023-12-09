@@ -35,3 +35,7 @@ window.flatpickr = require('flatpickr');
 //     forceTLS: (import.meta.env.VITE_PUSHER_SCHEME ?? 'https') === 'https',
 //     enabledTransports: ['ws', 'wss'],
 // });
+
+window.$ = window.jQuery = require('jquery');
+
+require('slick-carousel/slick/slick.min.js');
