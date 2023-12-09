@@ -34,14 +34,23 @@
 <script src="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
 
 <script>
-    $(document).ready(function(){
-      
- $('.slider').slick({
-  infinite: true,
-  slidesToShow: 3,
-  slidesToScroll: 3
-});
+   $(document).ready(function(){
+    $('.slider').slick({
+        infinite: true,
+        slidesToShow: 3,
+        slidesToScroll: 3,
+        responsive: [
+            {
+                breakpoint: 768, // Adjust this breakpoint as needed
+                settings: {
+                    slidesToShow: 1,
+                    slidesToScroll: 1
+                }
+            }
+        ]
     });
+});
+
 </script>
 
 </body>
