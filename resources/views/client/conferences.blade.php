@@ -34,13 +34,12 @@
                             @else
                                 <p>{{ __('app.no_registered_users') }}</p>
                             @endif --}}
-
+                            
                             <div class="mt-auto">
-
-                           <a href="{{ route('client.show', ['id' => $conference['id']]) }}" onclick="showLoading()" class="btn btn-primary">{{ __('app.more') }}</a>
-
-                                &nbsp&nbsp&nbsp
-                                <a href="{{ route('client.register') }}" onclick="showLoading()" class="btn btn-primary">{{ __('app.register')}}</a>
+                            <br>
+                            <a href="{{ route('client.show', ['id' => $conference['id']]) }}" onclick="showLoading()" class="btn btn-primary">{{ __('app.more') }}</a>
+                            &nbsp&nbsp&nbsp
+                            <a href="{{ route('client.register',['id' => $conference['id']]) }}" onclick="showLoading()" class="btn btn-primary">{{ __('app.register')}}</a>
                             </div>
                         </div>
                     </div>

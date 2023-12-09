@@ -13,5 +13,7 @@ return [
     'register' => 'Register',
     'conferences' => 'Conferences',
     'more' => 'More',
+    'info' => 'Information',
+    'date' => 'Date',
     
 ];

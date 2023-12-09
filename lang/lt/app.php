@@ -12,5 +12,7 @@ return [
     'conf_reg' => 'Registruotis į konferenciją',
     'register' => 'Registruotis',
     'conferences' => 'Konferencijos',
-    'more' => 'Plačiau'
+    'more' => 'Plačiau',
+    'info' => 'Informacija',
+    'date' => 'Data',
 ];

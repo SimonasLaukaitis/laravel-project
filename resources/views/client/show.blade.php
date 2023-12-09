@@ -12,7 +12,9 @@
             <div class="card-body">
                 <h2 class="card-title">{{ $conferences['event_name'] }}</h2>
                 <p class="card-text"><strong>{{ __('app.location') }}:</strong> {{ $conferences['location'] }}</p>
-                <p class="card-text">{{ $conferences['event_date'] }}</p>
+                <p class="card-text"><strong>{{ __('app.date') }}:</strong> {{ $conferences['event_date'] }}</p>
+                <p class="card-text"><strong>{{ __('app.info') }}:</strong></p>
+                <p class="card-text">{{ $conferences['info'] }}</p>
                 {{-- <p class="card-text"><strong>{{ __('app.registered_users') }}:</strong></p>
                 <ul class="list-group">
                     @forelse($conferences['registered_users'] as $user)

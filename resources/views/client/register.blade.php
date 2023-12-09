@@ -5,10 +5,10 @@
 @section('content')
 
 <div class="container">
-    registracija
-    {{-- <h1 class="mt-4">{{ __('app.conf_reg') }}</h1>
+  
+    <h1 class="mt-4">{{ __('app.conf_reg') }}</h1>
 
-    @if(isset($conf))
+    {{-- @if(isset($conf))
 
         <div class="card my-4">
             <div class="card-body">

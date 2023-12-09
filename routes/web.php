@@ -49,7 +49,8 @@ $conferences = [
             'Jonas Jonaitis',
             'Petras Petraitis'
         ],
-        'event_date' => '1990-12-25'
+        'event_date' => '1990-12-25',
+        'info' => 'The Christmas Conference is a festive gathering in Vilnius, celebrating the holiday spirit with tech enthusiasts and industry leaders.'
     ],
     2 => [
         'id' => '2',
@@ -57,7 +58,8 @@ $conferences = [
         'event_name' => 'Baltic Tech Summit',
         'registered_users' => [
         ],
-        'event_date' => '2023-09-15'
+        'event_date' => '2023-09-15',
+        'info' => 'The Baltic Tech Summit aims to bring together innovators and entrepreneurs from the Baltic region, fostering collaboration and technological advancements.'
     ],
     3 => [
         'id' => '3',
@@ -67,7 +69,8 @@ $conferences = [
             'Jonas Jonaitis',
             'Petras Petraitis'
         ],
-        'event_date' => '2023-11-10'
+        'event_date' => '2023-11-10',
+        'info' => 'The AI Innovation Forum in London serves as a platform for discussing the latest trends and breakthroughs in artificial intelligence, gathering experts and visionaries.'
     ],
     4 => [
         'id' => '4',
@@ -77,7 +80,8 @@ $conferences = [
             'Jonas Jonaitis',
             'Petras Petraitis'
         ],
-        'event_date' => '2024-03-25'
+        'event_date' => '2024-03-25',
+        'info' => 'The Tech Expo in New York showcases cutting-edge technologies and provides a stage for tech enthusiasts to explore innovations across various industries.'
     ],
     5 => [
         'id' => '5',
@@ -87,10 +91,12 @@ $conferences = [
             'Jonas Jonaitis',
             'Petras Petraitis'
         ],
-        'event_date' => '2024-06-05'
+        'event_date' => '2024-06-05',
+        'info' => 'The Developer Conference in San Francisco is a hub for developers, offering insights into the latest tools, languages, and best practices in software development.'
     ],
-    // You can continue adding more conferences here following the same format
+    // More conferences can be added here following the same format
 ];
+
 
 //Index page
 Route::get('/', function () {
@@ -110,44 +116,12 @@ Route::prefix('client')->name('client.')->group(function () use ($conferences){
         return app(ClientController::class)->show($conferences,$id);
     })->name('show');
 
-    Route::get('/conferences/register', function () use ($conferences) {
-        return app(ClientController::class)->register($conferences);
+    Route::get('/conferences/register/{id}', function ($id) use ($conferences) {
+        return app(ClientController::class)->register($conferences,$id);
     })->name('register');
 
-   
 });
 
-// //client
-// Route::prefix('client')->name('client.')->group(function () use ($conferences) {
-
-//     Route::get('conferences', function () use ($conferences) {
-//         app()->setLocale('lt');
-//         return view('client.conferences', ['conferences' => $conferences]);
-//     })->name('client.conferences');
-
-//     Route::get('conferences/show/{id}', function ($id) use ($conferences){
-//         app()->setLocale('lt');
-
-//         if (array_key_exists($id, $conferences)) {
-//             return view('client.show', ['conf' => $conferences[$id]]);
-//         } else {
-//             return 'Konferencija nerasta';
-//         }
-
-//     })->name('client.show');
-
-
-//     Route::get('conferences/register/{id}', function ($id) use ($conferences){
-//         app()->setLocale('lt');
-
-//         if (array_key_exists($id, $conferences)) {
-//             return view('client.register', ['conf' => $conferences[$id]]);
-//         } else {
-//             return 'Konferencija nerasta';
-//         }
-
-//     })->name('client.register');
-// });
 
 // //employee
 // Route::prefix('worker')->name('worker.')->group(function () {
