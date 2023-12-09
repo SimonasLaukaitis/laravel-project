@@ -106,17 +106,15 @@ Route::prefix('client')->name('client.')->group(function () use ($conferences){
         return app(ClientController::class)->index($conferences);
     })->name('conferences');
 
-    Route::get('conferences/show/{id}', function ($id) use ($conferences) {
-        app()->setLocale('lt');
-    
-        if (array_key_exists($id, $conferences)) {
-            return view('client.show', ['conf' => $conferences[$id]]);
-        } else {
-            return 'Konferencija nerasta';
-        }
-    })->name('client.show');
-    // Route::get('/conferences/show/{id}', [ClientController::class, 'showConference'])->name('showConference');
-    // Route::get('/conferences/register/{id}', [ClientController::class, 'registerConference'])->name('registerConference');
+    Route::get('/conferences/show/{id}', function ($id) use ($conferences) {
+        return app(ClientController::class)->show($conferences,$id);
+    })->name('show');
+
+    Route::get('/conferences/register', function () use ($conferences) {
+        return app(ClientController::class)->register($conferences);
+    })->name('register');
+
+   
 });
 
 // //client

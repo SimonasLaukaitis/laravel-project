@@ -5,7 +5,8 @@
 @section('content')
 
 <div class="container">
-    <h1 class="mt-4">{{ __('app.conf_reg') }}</h1>
+    registracija
+    {{-- <h1 class="mt-4">{{ __('app.conf_reg') }}</h1>
 
     @if(isset($conf))
 
@@ -21,7 +22,7 @@
 
     @else
         <p class="alert alert-warning">{{ __('app.conference_not_found') }}</p>
-    @endif
+    @endif --}}
 
 </div>
 

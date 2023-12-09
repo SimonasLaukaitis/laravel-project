@@ -16,15 +16,16 @@
                         <div class="card-body d-flex flex-column">
                             <label for="ev-name">{{ __('app.event_name') }}</label>
                             <h4 id="ev-name">{{ $conference['event_name'] }}</h4>
+                            <p>{{ $conference['id'] }}</p>
 
-                            @if(isset($conference['event_date']))
+                            {{-- @if(isset($conference['event_date']))
                                 <h5>{{ $conference['event_date'] }}</h5>
                             @endif
 
                             <label for="ev-location">{{ __('app.location') }}</label>
-                            <h5 id="ev-location">{{ $conference['location'] }}</h5>
-                            <p>{{ __('app.registered_users') }}</p>
-                            @if(isset($conference['registered_users']) && count($conference['registered_users']) > 0)
+                            <h5 id="ev-location">{{ $conference['location'] }}</h5> --}}
+                            {{-- <p>{{ __('app.registered_users') }}</p> --}}
+                            {{-- @if(isset($conference['registered_users']) && count($conference['registered_users']) > 0)
                                 <ul>
                                     @foreach($conference['registered_users'] as $user)
                                         <li>{{ $user }}</li>
@@ -32,14 +33,14 @@
                                 </ul>
                             @else
                                 <p>{{ __('app.no_registered_users') }}</p>
-                            @endif
+                            @endif --}}
 
                             <div class="mt-auto">
 
-                           <a href="" onclick="showLoading()" class="btn btn-primary">{{ __('app.more') }}</a>
+                           <a href="{{ route('client.show', ['id' => $conference['id']]) }}" onclick="showLoading()" class="btn btn-primary">{{ __('app.more') }}</a>
 
                                 &nbsp&nbsp&nbsp
-                                <a href="" onclick="showLoading()" class="btn btn-primary">{{ __('app.register')}}</a>
+                                <a href="{{ route('client.register') }}" onclick="showLoading()" class="btn btn-primary">{{ __('app.register')}}</a>
                             </div>
                         </div>
                     </div>
