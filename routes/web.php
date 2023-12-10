@@ -215,17 +215,17 @@ $conferences = [
     // More conferences can be added here following the same format
 ];
 
-
+app()->setLocale('lt');
 
 //Index page
 Route::get('/', function () {
-    app()->setLocale('lt');
+   
     return view('index');
 })->name('index');
 
 //client
 Route::prefix('client')->name('client.')->group(function () use ($conferences) {
-    app()->setLocale('lt');
+ 
 
     Route::get('/conferences', function () use ($conferences) {
         return app(ClientController::class)->index($conferences);
@@ -243,7 +243,7 @@ Route::prefix('client')->name('client.')->group(function () use ($conferences) {
 
 //Worker
 Route::prefix('worker')->name('worker.')->group(function () use ($conferences) {
-    app()->setLocale('lt');
+
 
     Route::get('/conferences', function () use ($conferences) {
         return app(WorkerController::class)->index($conferences);
@@ -254,8 +254,9 @@ Route::prefix('worker')->name('worker.')->group(function () use ($conferences) {
     })->name('show');
 });
 
+//Admin
 Route::prefix('admin')->name('admin.')->group(function () use ($users,$conferences){
-    app()->setLocale('lt');
+ 
 
     Route::get('/menu', function () {
         return app(AdminController::class)->index();
