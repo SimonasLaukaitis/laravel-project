@@ -8,6 +8,7 @@ use App\Http\Controllers\ClientController;
 use App\Http\Controllers\WorkerController;
 use App\Http\Controllers\AdminController;
 
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -281,6 +282,7 @@ Route::prefix('admin')->name('admin.')->group(function () use ($users,$conferenc
     Route::get('/menu/userlist/conferencelist/newconference', function ()  {
         return app(AdminController::class)->newConference();
     })->name('newconference');
+
     Route::get('/menu/userlist/conferencelist/conferenceedit/{id}', function ($id) use ($conferences)   {
         return app(AdminController::class)->editConference($conferences, $id);
     })->name('conferenceedit');

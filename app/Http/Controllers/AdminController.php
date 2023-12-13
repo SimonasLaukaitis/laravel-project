@@ -6,6 +6,7 @@ use App\Models\Client;
 use App\Models\Conference;
 use Illuminate\Routing\Controller as BaseController;
 use Illuminate\Http\Request; 
+use Illuminate\Support\Facades\Validator;
 
 
 class AdminController extends Controller
@@ -41,6 +42,26 @@ class AdminController extends Controller
         $conferenceID = $conferences[$id] ?? null;
         return view('admin.conferenceedit', ['conferenceID' => $conferenceID,'conference' => $conferenceID]);
     }
+
+    // public function updateUser(Request $request)
+    // {
+    //     $validator = Validator::make($request->all(), [
+    //         'name' => 'required',
+    //         'surname' => 'required',
+    //         'email' => 'required|email',
+    //         'user_type' => 'required',
+    //     ]);
+
+    //     if ($validator->fails()) {
+    //         return redirect()->back()->withErrors($validator)->withInput();
+    //     }
+
+    //     // If the validation passes, you can process the form data here
+    //     // For example, save the data to the database, update user information, etc.
+
+    //     // After processing, redirect to a success route or view
+    //     return redirect()->route('success')->with('success_message', 'User updated successfully!');
+    // }
 
     // public function show($conferences, $id)
     // {   
