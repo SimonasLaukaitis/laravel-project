@@ -219,9 +219,13 @@ app()->setLocale('lt');
 
 //Index page
 Route::get('/', function () {
-   
     return view('index');
 })->name('index');
+
+//success page
+Route::get('/success', function () {
+    return view('success');
+})->name('success');
 
 //client
 Route::prefix('client')->name('client.')->group(function () use ($conferences) {
@@ -277,5 +281,8 @@ Route::prefix('admin')->name('admin.')->group(function () use ($users,$conferenc
     Route::get('/menu/userlist/conferencelist/newconference', function ()  {
         return app(AdminController::class)->newConference();
     })->name('newconference');
+    Route::get('/menu/userlist/conferencelist/conferenceedit/{id}', function ($id) use ($conferences)   {
+        return app(AdminController::class)->editConference($conferences, $id);
+    })->name('conferenceedit');
 
 });

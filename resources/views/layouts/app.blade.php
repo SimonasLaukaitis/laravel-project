@@ -19,11 +19,14 @@
      <!-- Include Slick CSS from CDN -->
     <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css"/>
     <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick-theme.css"/>
-
-
+   
 </head>
 
 <body>
+   <div class="d-flex justify-content-end" style="margin-right: 20px; margin-top: 20px;">
+    <a class="btn btn-primary mx-2 disabled" href="" >{{ __('app.logout')}}</a>
+</div>
+
 
     @yield('content')
 

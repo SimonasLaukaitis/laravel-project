@@ -38,8 +38,8 @@
                             
                             <div class="mt-auto">
                             <br>
-                            {{-- {{ route('client.show', ['id' => $conference['id']]) }} --}}
-                            <a href="" onclick="showLoading()" class="btn btn-primary">{{ __('app.edit') }}</a>
+                           
+                            <a href="{{ route('admin.conferenceedit', ['id' => $conference['id']]) }}" onclick="showLoading()" class="btn btn-primary">{{ __('app.edit') }}</a>
                             
                             </div>
                         </div>

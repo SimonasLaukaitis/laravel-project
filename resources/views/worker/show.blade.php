@@ -28,6 +28,7 @@
 
     @else
         <p class="alert alert-warning">{{ __('app.conference_not_found') }}</p>
+        
     @endif
 
 </div>

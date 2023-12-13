@@ -34,6 +34,12 @@ class AdminController extends Controller
     public function newConference()
     {   
         return view('admin.newconference');
+    } 
+
+    public function editConference($conferences,$id)
+    {   
+        $conferenceID = $conferences[$id] ?? null;
+        return view('admin.conferenceedit', ['conferenceID' => $conferenceID,'conference' => $conferenceID]);
     }
 
     // public function show($conferences, $id)

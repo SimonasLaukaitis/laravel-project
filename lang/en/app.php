@@ -29,5 +29,6 @@ return [
     'user_type' => 'User Type',
     'update' => 'Update',
     'add_new' => 'Add new',
+    'logout' => 'Log out',
     
 ];
