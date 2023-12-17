@@ -18,7 +18,7 @@ class WorkerController extends Controller
     public function show($conferences, $id)
     {   
         $conferenceID = $conferences[$id] ?? null;
-        return view('worker.show', ['conferenceID' => $conferenceID, 'conferences' => $conferenceID]);
+        return view('worker.show', ['conferences' => $conferenceID]);
     }
 
 }

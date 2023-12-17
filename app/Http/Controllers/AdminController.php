@@ -7,6 +7,7 @@ use App\Models\Conference;
 use Illuminate\Routing\Controller as BaseController;
 use Illuminate\Http\Request; 
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Facades\Redirect;
 
 
 class AdminController extends Controller
@@ -24,7 +25,7 @@ class AdminController extends Controller
     public function userEdit($users,$id)
     {   
         $usersID = $users[$id] ?? null;
-        return view('admin.useredit', ['userID' => $usersID,'user' => $usersID]);
+        return view('admin.useredit', ['user' => $usersID]);
     }
 
     public function showConferences($conferences)
@@ -40,39 +41,22 @@ class AdminController extends Controller
     public function editConference($conferences,$id)
     {   
         $conferenceID = $conferences[$id] ?? null;
-        return view('admin.conferenceedit', ['conferenceID' => $conferenceID,'conference' => $conferenceID]);
+        return view('admin.conferenceedit', ['conference' => $conferenceID]);
     }
 
-    // public function updateUser(Request $request)
-    // {
-    //     $validator = Validator::make($request->all(), [
-    //         'name' => 'required',
-    //         'surname' => 'required',
-    //         'email' => 'required|email',
-    //         'user_type' => 'required',
-    //     ]);
+    public function storeConference(Request $request)
+    {
+        $validatedData = $request->validate([
+            'name' => 'required|max:255',
+            'surname' => 'required|max:255',
+            'date' => 'required|date', // Updated to 'date' instead of 'email'
+            'user_type' => 'required',
+        ]);
+    
+        // return redirect()->route('admin.conferencelist')->with('success', 'Conference created successfully');
+        return redirect()->route('success')->with('success', 'Conference created successfully');
+    }
+    
 
-    //     if ($validator->fails()) {
-    //         return redirect()->back()->withErrors($validator)->withInput();
-    //     }
-
-    //     // If the validation passes, you can process the form data here
-    //     // For example, save the data to the database, update user information, etc.
-
-    //     // After processing, redirect to a success route or view
-    //     return redirect()->route('success')->with('success_message', 'User updated successfully!');
-    // }
-
-    // public function show($conferences, $id)
-    // {   
-    //     $conferenceID = $conferences[$id] ?? null;
-    //     return view('client.show', ['conferenceID' => $conferenceID, 'conferences' => $conferenceID]);
-    // }
-
-    // public function register($conferences, $id)
-    // {   
-    //     $conferenceID = $conferences[$id] ?? null;
-    //     return view('client.register', ['conferenceID' => $conferenceID, 'conferences' => $conferenceID]);
-    // }
-
+   
 }

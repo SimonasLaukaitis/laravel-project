@@ -18,13 +18,13 @@ class ClientController extends Controller
     public function show($conferences, $id)
     {   
         $conferenceID = $conferences[$id] ?? null;
-        return view('client.show', ['conferenceID' => $conferenceID, 'conferences' => $conferenceID]);
+        return view('client.show', ['conferences' => $conferenceID]);
     }
 
     public function register($conferences, $id)
     {   
         $conferenceID = $conferences[$id] ?? null;
-        return view('client.register', ['conferenceID' => $conferenceID, 'conferences' => $conferenceID]);
+        return view('client.register', ['conferences' => $conferenceID]);
     }
 
 }
