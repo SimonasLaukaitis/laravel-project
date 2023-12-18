@@ -49,7 +49,7 @@ class AdminController extends Controller
         $validatedData = $request->validate([
             'name' => 'required|max:255',
             'surname' => 'required|max:255',
-            'date' => 'required|date', // Updated to 'date' instead of 'email'
+            'date' => 'required|date',
             'user_type' => 'required',
         ]);
     
