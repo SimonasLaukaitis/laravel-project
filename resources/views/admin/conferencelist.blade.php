@@ -26,15 +26,22 @@
                             <label for="ev-location">{{ __('app.location') }}</label>
                             <h5 id="ev-location">{{ $conference['location'] }}</h5>
                             <p>{{ __('app.registered_users') }}</p>
-                            @if(isset($conference['registered_users']) && count($conference['registered_users']) > 0)
-                                <ul>
-                                    @foreach($conference['registered_users'] as $user)
-                                        <li>{{ $user }}</li>
-                                    @endforeach
-                                </ul>
-                            @else
-                                <p>{{ __('app.no_registered_users') }}</p>
-                            @endif
+
+                            @if(!empty($conference['registered_users']))
+                                @php
+                                   $registered_users = explode(', ', trim($conference['registered_users']));
+                                @endphp
+                                @if(count($registered_users) > 0)
+                                    <ul>
+                                        @foreach($registered_users as $user)
+                                            <li>{{ $user }}</li>
+                                        @endforeach
+                                    </ul>
+                                @else
+                                    <p>{{ __('app.no_registered_users') }}</p>
+                                @endif
+                                @endif
+
                             
                             <div class="mt-auto">
                             <br>

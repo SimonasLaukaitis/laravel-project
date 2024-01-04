@@ -17,11 +17,16 @@
                 <p class="card-text">{{ $conferences['info'] }}</p>
                 <p class="card-text"><strong>{{ __('app.registered_users') }}:</strong></p>
                 <ul class="list-group">
-                    @forelse($conferences['registered_users'] as $user)
-                        <li class="list-group-item">{{ $user }}</li>
-                    @empty
-                        <li class="list-group-item">{{ __('app.no_registered_users') }}</li>
-                    @endforelse
+                 @php
+                $registered_users = explode(', ', $conferences['registered_users']);
+              @endphp
+              @if(count($registered_users) > 0)
+                 @foreach($registered_users as $user)
+                    <li class="list-group-item">{{ $user }}</li>
+                 @endforeach
+              @else
+                 <li class="list-group-item">{{ __('app.no_registered_users') }}</li>ss
+              @endif
                 </ul>
             </div>
         </div>
