@@ -28,20 +28,19 @@
                             <p>{{ __('app.registered_users') }}</p>
 
                             @if(!empty($conference['registered_users']))
-                                @php
-                                   $registered_users = explode(', ', trim($conference['registered_users']));
-                                @endphp
-                                @if(count($registered_users) > 0)
-                                    <ul>
-                                        @foreach($registered_users as $user)
-                                            <li>{{ $user }}</li>
-                                        @endforeach
-                                    </ul>
-                                @else
-                                    <p>{{ __('app.no_registered_users') }}</p>
-                                @endif
-                                @endif
-
+                            @php
+                                $registered_users = explode(', ', trim($conference['registered_users']));
+                            @endphp
+                            @if(!empty($registered_users))
+                                <ul>
+                                    @foreach($registered_users as $user)
+                                        <li>{{ $user }}</li>
+                                    @endforeach
+                                </ul>
+                            @endif
+                            @else
+                                <p>{{ __('app.no_registered_users') }}</p>
+                            @endif
                             
                             <div class="mt-auto">
                             <br>
