@@ -96,6 +96,10 @@ Route::prefix('admin')->name('admin.')->group(function () use ($users,$conferenc
     Route::get('/menu/userlist/conferencelist/conferenceedit/{id}', function ($id) use ($conferences)   {
         return app(AdminController::class)->editConference($conferences, $id);
     })->name('conferenceedit');
+    
+    Route::get('/menu/userlist/conferencelist/conferencedelete/{id}', function ($id) use ($conferences)   {
+        return app(AdminController::class)->deleteConference($conferences, $id);
+    })->name('conferencedelete');
 
     // for storing new conference
     Route::post('/menu/userlist/conferencelist/store', [AdminController::class, 'storeConference'])->name('storeConference');

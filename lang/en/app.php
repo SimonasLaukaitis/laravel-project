@@ -30,5 +30,6 @@ return [
     'update' => 'Update',
     'add_new' => 'Add new',
     'logout' => 'Log out',
+    'delete' => 'Delete'
     
 ];

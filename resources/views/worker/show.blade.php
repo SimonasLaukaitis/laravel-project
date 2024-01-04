@@ -32,7 +32,7 @@
             @endif
             @else
             <li class="list-group-item">{{ __('app.no_registered_users') }}</li>
-@endif
+            @endif
                 </ul>
             </div>
         </div>

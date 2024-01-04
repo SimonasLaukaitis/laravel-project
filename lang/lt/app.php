@@ -30,5 +30,6 @@ return [
     'update' => 'Atnaujinti',
     'add_new' => 'Pridėti naują',
     'logout' => 'Atsijungti',
+    'delete' => 'Naikinti'
     
 ];
