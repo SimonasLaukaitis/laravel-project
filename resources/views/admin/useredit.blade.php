@@ -7,8 +7,8 @@
     <h1 class="mt-4">{{ __('app.edit') }}</h1>
 
     @if(isset($user))
-    {{-- {{ route('update.user', ['id' => $user['id']]) }} --}}
-    <form method="POST" action="">
+   
+    <form method="POST" action="{{ route('admin.useredit', ['id' => $user->id]) }}">
         @csrf
         @method('PUT')
 

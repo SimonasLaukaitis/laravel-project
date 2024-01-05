@@ -8,6 +8,7 @@ use Illuminate\Routing\Controller as BaseController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Redirect;
+use App\Models\User;
 
 
 class AdminController extends Controller
@@ -45,16 +46,16 @@ class AdminController extends Controller
     }
 
 
-    public function deleteConference($conferences,$id)
+    public function deleteConference($conferences, $id)
     {
-       $conference = Conference::find($id);
-    
-       if ($conference !== null) {
-           $conference->delete();
-           return redirect()->route('admin.conferencelist')->with('success', 'Conference deleted successfully');
-       } else {
-           return redirect()->route('admin.conferencelist')->with('error', 'Conference not found');
-       }
+        $conference = Conference::find($id);
+
+        if ($conference !== null) {
+            $conference->delete();
+            return redirect()->route('admin.conferencelist')->with('success', 'Conference deleted successfully');
+        } else {
+            return redirect()->route('admin.conferencelist')->with('error', 'Conference not found');
+        }
     }
 
 
@@ -70,4 +71,21 @@ class AdminController extends Controller
         // return redirect()->route('admin.conferencelist')->with('success', 'Conference created successfully');
         return redirect()->route('success')->with('success', 'Conference created successfully');
     }
+
+    public function putUser(Request $request, $id)
+    {
+       $user = User::findOrFail($id);
+    
+       $validatedData = $request->validate([
+           'name' => 'required|max:255',
+           'surname' => 'required|max:255',
+           'email' => 'required|email|max:255',
+           'user_type' => 'required',
+       ]);
+    
+       $user->update($validatedData);
+    
+       return redirect()->route('admin.userlist')->with('success', 'User updated successfully');
+    }
+    
 }

@@ -103,4 +103,7 @@ Route::prefix('admin')->name('admin.')->group(function () use ($users,$conferenc
 
     // for storing new conference
     Route::post('/menu/userlist/conferencelist/store', [AdminController::class, 'storeConference'])->name('storeConference');
+
+    //Updating user
+    Route::put('/menu/userlist/useredit/{id}', [AdminController::class, 'putUser'])->name('useredit');
 });
