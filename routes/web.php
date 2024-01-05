@@ -106,4 +106,9 @@ Route::prefix('admin')->name('admin.')->group(function () use ($users,$conferenc
 
     //Updating user
     Route::put('/menu/userlist/useredit/{id}', [AdminController::class, 'putUser'])->name('useredit');
+
+    //Updating conference
+    Route::put('/menu/userlist/conferencelist/conferenceedit/{id}', [AdminController::class, 'updateConference'])->name('conference.update');
+
+
 });

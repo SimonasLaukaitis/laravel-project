@@ -74,18 +74,33 @@ class AdminController extends Controller
 
     public function putUser(Request $request, $id)
     {
-       $user = User::findOrFail($id);
-    
+        $user = User::findOrFail($id);
+
+        $validatedData = $request->validate([
+            'name' => 'required|max:255',
+            'surname' => 'required|max:255',
+            'email' => 'required|email|max:255',
+            'user_type' => 'required',
+        ]);
+
+        $user->update($validatedData);
+
+        return redirect()->route('admin.userlist')->with('success', 'User updated successfully');
+    }
+
+    public function updateConference(Request $request, $id)
+    {
        $validatedData = $request->validate([
-           'name' => 'required|max:255',
-           'surname' => 'required|max:255',
-           'email' => 'required|email|max:255',
-           'user_type' => 'required',
+           'location' => 'required',
+           'event_name' => 'required',
+           'event_date' => 'required|date',
+           'info' => 'required',
        ]);
     
-       $user->update($validatedData);
+       $conference = Conference::findOrFail($id);
+       $conference->update($validatedData);
     
-       return redirect()->route('admin.userlist')->with('success', 'User updated successfully');
+       return redirect()->route('admin.conferencelist')->with('success','Conference updated successfully');
     }
     
 }

@@ -7,8 +7,8 @@
     <h1 class="mt-4">{{ __('app.edit') }}</h1>
 
     @if(isset($conference))
-    {{-- {{ route('conference.update', $conference->id) }} --}}
-    <form method="POST" action="">
+  
+    <form method="POST" action="{{ route('admin.conference.update', ['id' => $conference['id']]) }}">
         @csrf
         @method('PUT')
 

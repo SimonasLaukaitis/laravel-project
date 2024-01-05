@@ -45,7 +45,7 @@
                             <div class="mt-auto">
                             <br>
                            
-                            <a href="{{ route('admin.conferenceedit', ['id' => $conference['id']]) }}" onclick="showLoading()" class="btn btn-primary">{{ __('app.edit') }}</a>
+                            <a href="{{ route('admin.conferenceedit', ['id' => $conference['id']-1]) }}" onclick="showLoading()" class="btn btn-primary">{{ __('app.edit') }}</a>
 
                             <a href="{{ route('admin.conferencedelete', ['id' => $conference['id']]) }}" onclick="return confirm('Are you sure you want to delete?')" class="btn btn-danger">{{ __('app.delete') }}</a>
                             
