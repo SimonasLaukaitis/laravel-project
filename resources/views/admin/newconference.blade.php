@@ -6,12 +6,12 @@
 <div class="container">
     <h1 class="mt-4">{{ __('app.add_new') }}</h1>
 
-    <form method="POST" action="{{ route('admin.storeConference') }}">
+    <form method="POST" action="{{ route('admin.conference.store') }}">
         @csrf
 
         <div class="form-group">
             <label for="location">{{ __('app.location') }}</label>
-            <input type="text" class="form-control @error('name') is-invalid @enderror" id="location" name="name" value="{{ old('name') }}">
+            <input type="text" class="form-control @error('location') is-invalid @enderror" id="location" name="location" value="{{ old('location') }}">
             @error('name')
                 <div class="invalid-feedback">{{ $message }}</div>
             @enderror
@@ -19,23 +19,23 @@
 
         <div class="form-group">
             <label for="event-name">{{ __('app.event_name') }}</label>
-            <input type="text" class="form-control @error('surname') is-invalid @enderror" id="event-name" name="surname" value="{{ old('surname') }}">
+            <input type="text" class="form-control @error('surname') is-invalid @enderror" id="event-name" name="event-name" value="{{ old('event-name') }}">
             @error('surname')
                 <div class="invalid-feedback">{{ $message }}</div>
             @enderror
         </div>
 
         <div class="form-group">
-            <label for="date">{{ __('app.date') }}</label>
-            <input type="date" class="form-control @error('date') is-invalid @enderror" id="date" name="date" value="{{ old('date') }}">
-            @error('date')
+            <label for="event_date">{{ __('app.date') }}</label>
+            <input type="date" class="form-control @error('event_date') is-invalid @enderror" id="event_date" name="date" value="{{ old('event_date') }}">
+            @error('event_date')
                 <div class="invalid-feedback">{{ $message }}</div>
             @enderror
         </div>
 
         <div class="form-group">
             <label for="info">{{ __('app.info') }}</label>
-            <textarea class="form-control @error('user_type') is-invalid @enderror" id="info" name="user_type">{{ old('user_type') }}</textarea>
+            <textarea class="form-control @error('info') is-invalid @enderror" id="info" name="info">{{ old('info') }}</textarea>
             @error('user_type')
                 <div class="invalid-feedback">{{ $message }}</div>
             @enderror
