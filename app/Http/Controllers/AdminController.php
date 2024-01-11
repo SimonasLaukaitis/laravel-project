@@ -117,4 +117,36 @@ class AdminController extends Controller
 
         return redirect()->route('admin.conferencelist')->with('success', 'Conference created successfully');
     }
+
+    public function userregistration()
+    {
+        return view('admin.userregistration');
+    }
+
+    public function createUser(Request $request)
+    {
+        // dd($request->all()); 
+        if ($request->isMethod('post')) {
+            // Validate the form data
+            $validatedData = $request->validate([
+                'name' => 'required|max:255',
+                'surname' => 'required|max:255',
+                'email' => 'required|email|max:255|unique:users',
+                // Add other fields as needed
+            ]);
+
+            // Set the default value for user_type
+            $validatedData['user_type'] = 'client';
+
+            // Create a new user
+            $user = User::create($validatedData);
+            
+
+            // Optionally, you can redirect to a user edit page or any other page
+            return redirect()->route('admin.userregistration', ['id' => $user->id])->with('success', 'User created successfully');
+        }
+
+        // If it's a GET request, show the registration form
+        return view('admin.userregistration');
+    }
 }

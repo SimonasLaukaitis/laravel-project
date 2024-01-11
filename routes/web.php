@@ -56,7 +56,6 @@ Route::prefix('client')->name('client.')->group(function () use ($conferences) {
 
 });
 
-
 //Worker
 Route::prefix('worker')->name('worker.')->group(function () use ($conferences) {
 
@@ -76,6 +75,10 @@ Route::prefix('admin')->name('admin.')->group(function () use ($users,$conferenc
     Route::get('/menu', function () {
         return app(AdminController::class)->index();
     })->name('menu');
+
+    Route::get('/userregistration', function () {
+        return app(AdminController::class)->userregistration();
+    })->name('userregistration');
 
     Route::get('/menu/userlist', function () use ($users){
         return app(AdminController::class)->userList($users);
@@ -112,5 +115,5 @@ Route::prefix('admin')->name('admin.')->group(function () use ($users,$conferenc
 
     Route::post('/menu/userlist/conferencelist/store', [AdminController::class, 'store'])->name('conference.store');
 
-
+    Route::post('/create-user', [AdminController::class, 'createUser'])->name('createUser');
 });

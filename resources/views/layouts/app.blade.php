@@ -23,10 +23,15 @@
 </head>
 
 <body>
-   <div class="d-flex justify-content-end" style="margin-right: 20px; margin-top: 20px;">
-   <p>Vardas Pavardė</p>
-    <a class="btn btn-primary mx-2 disabled" href="" >{{ __('app.logout')}}</a>
-</div>
+<div class="text-center">
+        <p></p>
+        <a class="btn btn-primary mx-2" href="{{ route('index') }}">{{ __('app.home')}}</a>
+        <div class="d-flex justify-content-end" style="margin-right: 20px; margin-top: 20px;">
+            <p>Vardas Pavardė</p>
+            <a class="btn btn-primary mx-2 disabled" href="">{{ __('app.logout')}}</a>
+        </div>
+  
+    </div>
 
 
     @yield('content')

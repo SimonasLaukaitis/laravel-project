@@ -30,6 +30,8 @@ return [
     'update' => 'Atnaujinti',
     'add_new' => 'Pridėti naują',
     'logout' => 'Atsijungti',
-    'delete' => 'Naikinti'
+    'delete' => 'Naikinti',
+    'userregistration' => 'Vartotojo registracija',
+    'home' => 'Pradžios puslapis'
     
 ];

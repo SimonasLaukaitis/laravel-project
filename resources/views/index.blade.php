@@ -12,8 +12,14 @@
        <a href="{{ route('client.conferences') }}" onclick="showLoading()" class="btn btn-primary mx-2" href="">{{ __('app.client')}}</a>
        <a class="btn btn-primary mx-2" href="{{ route('worker.conferences') }}">{{ __('app.worker')}}</a>
        <a class="btn btn-primary mx-2" href="{{ route('admin.menu') }}">{{ __('app.administrator')}}</a>
+      
        
     </div>
+     <p>_______________________________________________________</p>
+    <div class="d-flex justify-content-center">
+   
+     <a class="btn btn-primary mx-2" href="{{ route('admin.userregistration') }}">{{ __('app.userregistration')}}</a>
+     </div>
 </div>
 
 

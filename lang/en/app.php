@@ -30,6 +30,8 @@ return [
     'update' => 'Update',
     'add_new' => 'Add new',
     'logout' => 'Log out',
-    'delete' => 'Delete'
+    'delete' => 'Delete',
+    'userregistration' => 'User registration',
+    'home' => 'Home page'
     
 ];
